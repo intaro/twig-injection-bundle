@@ -17,7 +17,7 @@
         "symfony/twig-bundle": "~2.2",
         "symfony/http-kernel" : "~2.2",
         "symfony/event-dispatcher" : "~2.2",
-        "symfony/yaml": "~2.1",
+        "symfony/yaml": "~2.1"
     },
     "autoload": {
         "psr-0": {
