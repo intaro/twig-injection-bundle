@@ -41,15 +41,15 @@ $ composer update intaro/twig-injection-bundle
 
 ## Usage
 
-1. Add `{{ inject() }}` calling in template:
+1) Add `{{ inject() }}` calling in template:
 
 ```twig
-    {{ inject('twig.injection.event.name', { parameter1: 'some-value', parameter2: some_object }) }}
+{{ inject('twig.injection.event.name', { parameter1: 'some-value', parameter2: some_object }) }}
 ```
 
-2. Prepare controller action which you want to render or template which you want to include.
+2) Prepare controller action which you want to render or template which you want to include.
 
-3. Define Listener which will inject `include` or `render` calling:
+3) Define Listener which will inject `include` or `render` calling:
 
 ```php
 <?php
@@ -81,7 +81,7 @@ class TwigInjectionListener
 }
 ```
 
-4. Register the listener:
+4) Register the listener:
 
 ```yaml
 services:
