@@ -1,0 +1,28 @@
+{
+    "name": "intaro/twig-injection-bundle",
+    "description": "The TwigInjectionBundle allows to inject twig templates through the event behavior",
+    "keywords": ["symfony2", "twig", "event"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Intaro Soft",
+            "email": "mail@intaro.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.4",
+        "symfony/framework-bundle" : "~2.2",
+        "symfony/twig-bridge": "~2.2",
+        "symfony/twig-bundle": "~2.2",
+        "symfony/http-kernel" : "~2.2",
+        "symfony/event-dispatcher" : "~2.2",
+        "symfony/yaml": "~2.1",
+    },
+    "autoload": {
+        "psr-0": {
+            "Intaro\\TwigInjectionBundle\\": ""
+        }
+    },
+    "target-dir" : "Intaro/TwigInjectionBundle"
+}

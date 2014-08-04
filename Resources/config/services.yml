@@ -1,0 +1,11 @@
+parameters:
+    intaro_twig_injection.twig_injection.class: Intaro\TwigInjectionBundle\Twig\InjectionExtension
+
+services:
+    intaro_twig_injection.twig_injection:
+        class: "%intaro_twig_injection.twig_injection.class%"
+        arguments:
+            - "@fragment.handler"
+            - "@event_dispatcher"
+        tags:
+            - { name: twig.extension }
