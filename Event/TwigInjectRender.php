@@ -15,9 +15,9 @@ class TwigInjectRender extends TwigInjectItem
     public function __construct(
         $controller,
         array $attributes = array(),
+        $priority = 0,
         array $query = array(),
-        $strategy = 'inline',
-        $priority = 0
+        $strategy = 'inline'
     ) {
         $this->controller = $controller;
         $this->attributes = $attributes;
