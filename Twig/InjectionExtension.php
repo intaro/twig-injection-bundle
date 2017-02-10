@@ -2,7 +2,7 @@
 namespace Intaro\TwigInjectionBundle\Twig;
 
 use Twig_Extension;
-use Twig_Function_Method;
+use Twig_SimpleFunction;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
@@ -25,7 +25,7 @@ class InjectionExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            'inject' => new Twig_Function_Method($this, 'inject', [
+            'inject' => new Twig_SimpleFunction('inject', [$this, 'inject'], [
                 'needs_environment' => true,
                 'needs_context' => true,
                 'is_safe' => array('all'),
