@@ -8,7 +8,7 @@ TwigInjectionBundle requires Symfony 2.8 or higher.
 
 Require the bundle in your `composer.json` file:
 
-````json
+```json
 {
     "require": {
         "intaro/twig-injection-bundle": "~1.0.0",
