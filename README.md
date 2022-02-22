@@ -11,7 +11,7 @@ Require the bundle in your `composer.json` file:
 ```json
 {
     "require": {
-        "intaro/twig-injection-bundle": "~1.0.0",
+        "intaro/twig-injection-bundle": "~1.0.0"
     }
 }
 ```
@@ -23,11 +23,11 @@ Register the bundle in `AppKernel`:
 
 public function registerBundles()
 {
-    $bundles = array(
+    $bundles = [
         //...
 
         new Intaro\TwigInjectionBundle\IntaroTwigInjectionBundle(),
-    );
+    ];
 
     //...
 }
