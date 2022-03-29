@@ -4,14 +4,14 @@ The TwigInjectionBundle allows to inject twig templates through the event behavi
 
 ## Installation
 
-TwigInjectionBundle requires Symfony 2.8 or higher.
+TwigInjectionBundle requires Symfony 3.4 or higher.
 
 Require the bundle in your `composer.json` file:
 
 ```json
 {
     "require": {
-        "intaro/twig-injection-bundle": "~1.0.0"
+        "intaro/twig-injection-bundle": "^2.0"
     }
 }
 ```
