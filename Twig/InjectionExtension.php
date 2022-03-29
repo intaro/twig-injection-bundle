@@ -1,17 +1,16 @@
 <?php
 namespace Intaro\TwigInjectionBundle\Twig;
 
-use Twig_Extension;
-use Twig_SimpleFunction;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
-use Symfony\Component\HttpKernel\Controller\ControllerReference;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Intaro\TwigInjectionBundle\Event\TwigInjectEvent;
 use Intaro\TwigInjectionBundle\Event\TwigInjectInclude;
 use Intaro\TwigInjectionBundle\Event\TwigInjectRender;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpKernel\Controller\ControllerReference;
+use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class InjectionExtension extends Twig_Extension
+class InjectionExtension extends AbstractExtension
 {
     private $fragment;
     private $dispatcher;
@@ -22,31 +21,31 @@ class InjectionExtension extends Twig_Extension
         $this->dispatcher = $dispatcher;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
-        return array(
-            'inject' => new Twig_SimpleFunction('inject', [$this, 'inject'], [
+        return [
+            'inject' => new TwigFunction('inject', [$this, 'inject'], [
                 'needs_environment' => true,
                 'needs_context' => true,
-                'is_safe' => array('all'),
+                'is_safe' => ['all'],
             ]),
-        );
+        ];
     }
 
-    public function inject(\Twig_Environment $env, $context, $eventName, array $parameters = [])
+    public function inject(\Twig\Environment $env, $context, $eventName, array $parameters = [])
     {
         $event = new TwigInjectEvent($parameters);
 
-        $event = $this->dispatcher->dispatch($eventName, $event);
+        $event = $this->dispatcher->dispatch($event, $eventName);
 
         return $this->render($env, $context, $event);
     }
 
-    private function render(\Twig_Environment $env, $context, TwigInjectEvent $event)
+    private function render(\Twig\Environment $env, $context, TwigInjectEvent $event)
     {
         $content = '';
 
-        if (sizeof($injections = $event->getInjections())) {
+        if (\count($injections = $event->getInjections()) > 0) {
             foreach ($injections as $item) {
                 if ($item instanceof TwigInjectInclude) {
                     $content .= $env->resolveTemplate($item->getTemplate())->render(array_merge($context, $item->getParameters()));
@@ -66,7 +65,7 @@ class InjectionExtension extends Twig_Extension
         return $content;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'twig_injection_extension';
     }

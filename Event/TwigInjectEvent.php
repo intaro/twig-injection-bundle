@@ -2,7 +2,7 @@
 
 namespace Intaro\TwigInjectionBundle\Event;
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class TwigInjectEvent extends Event
 {
